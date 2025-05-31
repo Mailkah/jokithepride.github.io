@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Joki Akun Mobile Legends - Cepat, Aman & Pembayaran Lengkap Di The Pride</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto:wght@400;700&display=swap');
+
+    :root {
+      --primary-color: #f23a3a;
+      --secondary-color: #1a1a1a;
+      --accent-color: #ffa500;
+      --background-gradient: linear-gradient(135deg, #1a1a1a 0%, #330000 100%);
+      --button-gradient: linear-gradient(45deg, #f23a3a, #ffa500);
+      --payment-bg: #2b2b2b;
+      --payment-border: #444;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      color: white;
+    }
+
+    body {
+      background: var(--background-gradient);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      scroll-behavior: smooth;
+      padding-bottom: 60px; /* footer spacing */
+    }
+
+    header {
+      width: 100%;
+      background: var(--secondary-color);
+      padding: 2rem 1rem;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(255, 69, 0, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.8rem;
+      color: var(--primary-color);
+      letter-spacing: 2px;
+      text-shadow: 0 0 8px var(--primary-color);
+      animation: flicker 3s infinite;
+    }
+
+    header p {
+      margin-top: 0.5rem;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #fff;
+      opacity: 0.85;
+    }
+
+    main {
+      max-width: 960px;
+      width: 100%;
+      padding: 2rem 1rem 4rem;
+    }
+
+    section {
+      margin-bottom: 3.5rem;
+    }
+
+    h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.4rem;
+      color: var(--accent-color);
+      text-align: center;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 8px var(--accent-color);
+    }
+
+    .about-text {
+      font-size: 1.15rem;
+      line-height: 1.6;
+      color: #eee;
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .packages {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+
+    .package-card {
+      background: #2c2c2c;
+      border-radius: 12px;
+      width: 280px;
+      padding: 1.8rem 1.5rem;
+      box-shadow: 0 0 15px rgba(255, 165, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .package-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(255, 165, 0, 0.75);
+    }
+
+    .package-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.6rem;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+
+    .package-desc {
+      font-size: 1rem;
+      color: #ddd;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .package-price {
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: var(--accent-color);
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn-order {
+      display: block;
+      width: 100%;
+      padding: 0.75rem 0;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--button-text-color, #fff);
+      border: none;
+      border-radius: 8px;
+      background: var(--button-gradient);
+      text-align: center;
+      cursor: pointer;
+      transition: background 0.4s ease;
+      user-select: none;
+      box-shadow: 0 0 10px var(--primary-color);
+    }
+
+    .btn-order:hover {
+      background: linear-gradient(45deg, #ffa500, #f23a3a);
+      box-shadow: 0 0 20px var(--accent-color);
+    }
+
+    /* Payment section styling */
+    .payment-methods {
+      max-width: 720px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(160px,1fr));
+      gap: 1.5rem;
+      padding: 0 0.5rem;
+    }
+
+    .payment-card {
+      background: var(--payment-bg);
+      border: 1.5px solid var(--payment-border);
+      border-radius: 14px;
+      padding: 1rem 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: border-color 0.3s ease;
+      cursor: default;
+      box-shadow: 0 0 8px rgba(255,165,0,0.15);
+    }
+
+    .payment-card:hover {
+      border-color: var(--accent-color);
+      box-shadow: 0 0 15px var(--accent-color);
+    }
+
+    .payment-icon {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      filter: drop-shadow(0 0 2px rgba(255, 165, 0, 0.8));
+    }
+
+    .payment-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .payment-name {
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--primary-color);
+    }
+
+    .payment-detail {
+      font-size: 0.9rem;
+      color: #ccc;
+      margin-top: 0.15rem;
+      user-select: text;
+    }
+
+    footer {
+      width: 100%;
+      background: var(--secondary-color);
+      padding: 1rem 0;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #bbb;
+      box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.1);
+      position: fixed;
+      bottom: 0;
+      left: 0;
+    }
+
+    /* Animated flicker effect on main title */
+    @keyframes flicker {
+      0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        text-shadow:
+          0 0 10px #f23a3a,
+          0 0 20px #f23a3a,
+          0 0 30px #ff4c4c,
+          0 0 40px #ff4c4c,
+          0 0 50px #ff4c4c,
+          0 0 60px #ff4c4c,
+          0 0 70px #ff4c4c;
+      }
+      20%, 22%, 24%, 55% {
+        text-shadow: none;
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .packages {
+        flex-direction: column;
+        align-items: center;
+      }
+      .package-card {
+        width: 90%;
+      }
+      header h1 {
+        font-size: 2rem;
+      }
+      .payment-methods {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Joki Akun Mobile Legends</h1>
+    <p>Naikkan Rank dan Tier Akunmu Dengan Cepat dan Aman Di The Pride ID!</p>
+  </header>
+  <main>
+    <section id="about">
+      <h2>Tentang Layanan Kami</h2>
+      <p class="about-text">
+        Kami menyediakan layanan joki akun Mobile Legends terpercaya dengan pengalaman bertahun-tahun.
+        Dijamin aman, cepat, dan sesuai target yang kamu mau. Tingkatkan rank, dapatkan skin langka, dan menangkan
+        pertandingan lebih mudah tanpa perlu repot grinding.
+      </p>
+    </section>
+
+    <section id="packages">
+      <h2>List Harga Joki Perbintang  The Pride</h2>
+      <div class="packages">
+        <div class="package-card" tabindex="0">
+          <div class="package-title">Paket Master/⭐</div>
+          <div class="package-desc">
+            Naikkan rank dalam waktu singkat dengan jaminan keamanan akun penuh.
+          </div>
+          <div class="package-price">Rp 2.000,-</div>
+          <button class="btn-order" onclick="orderPackage('Paket Master')">Pesan Sekarang</button>
+        </div>
+
+        <div class="package-card" tabindex="0">
+          <div class="package-title">Paket Grandmaster/⭐</div>
+          <div class="package-desc">
+            Dapatkan naikkan rank dengan mudah. Joki profesional kami akan bantu grinding akunmu secara efektif.
+          </div>
+          <div class="package-price">Rp 3.500 ,-</div>
+          <button class="btn-order" onclick="orderPackage('Paket Grandmaster')">Pesan Sekarang</button>
+        </div>
+
+        <div class="package-card" tabindex="0">
+          <div class="package-title">Paket Epic/⭐</div>
+          <div class="package-desc">
+            Tier Epic jadi impian? Serahkan pada kami. Akun mu akan melesat dengan aman dan cepat.
+          </div>
+          <div class="package-price">Rp 5.000,-</div>
+          <button class="btn-order" onclick="orderPackage('Paket Epic')">Pesan Sekarang</button>
+        </div>
+        
+        <div class="package-card" tabindex="0">
+          <div class="package-title">Paket Legend/⭐</div>
+          <div class="package-desc">
+            Naikkan rank dalam waktu singkat dengan jaminan keamanan akun penuh.
+          </div>
+          <div class="package-price">Rp ?.000,-</div>
+          <button class="btn-order" onclick="orderPackage('Paket Legend')">Pesan Sekarang</button>
+          </div>
+          
+          <div class="package-card" tabindex="0">
+          <div class="package-title">Paket Mythic/⭐</div>
+          <div class="package-desc">
+            Naikkan rank dalam waktu singkat dengan jaminan keamanan akun penuh.
+          </div>
+          <div class="package-price">Rp ?.000,-</div>
+          <button class="btn-order" onclick="orderPackage('Paket Legend')">Pesan Sekarang</button>
+          
+        </div>
+      </div>
+    </section>
+
+    <section id="payment">
+      <h2>Metode Pembayaran</h2>
+      <div class="payment-methods">
+        <div class="payment-card" title="GoPay - ID: 081234567890">
+          <img class="payment-icon" src="https://cdn-icons-png.flaticon.com/512/888/888879.png" alt="GoPay logo" />
+          <div class="payment-info">
+            <div class="payment-name">GoPay</div>
+            <div class="payment-detail">ID: 081234567890</div>
+          </div>
+        </div>
+
+        <div class="payment-card" title="OVO - ID: 082345678901">
+          <img class="payment-icon" src="https://cdn-icons-png.flaticon.com/512/888/888834.png" alt="OVO logo" />
+          <div class="payment-info">
+            <div class="payment-name">OVO</div>
+            <div class="payment-detail">ID: 082345678901</div>
+          </div>
+        </div>
+
+        <div class="payment-card" title="Dana - ID: 083456789012">
+          <img class="payment-icon" src="https://cdn-icons-png.flaticon.com/512/5968/5968350.png" alt="Dana logo" />
+          <div class="payment-info">
+            <div class="payment-name">Dana</div>
+            <div class="payment-detail">ID: 083456789012</div>
+          </div>
+        </div>
+
+        <div class="payment-card" title="Bank Transfer BCA">
+          <img class="payment-icon" src="https://seeklogo.com/images/B/bca-logo-2980F8E7E4-seeklogo.com.png" alt="BCA logo" />
+          <div class="payment-info">
+            <div class="payment-name">Bank BCA</div>
+            <div class="payment-detail">No. Rek: 123-456-7890</div>
+          </div>
+        </div>
+
+        <div class="payment-card" title="Bank Transfer Mandiri">
+          <img class="payment-icon" src="https://seeklogo.com/images/M/mandiri-bank-logo-5F794F5781-seeklogo.com.png" alt="Mandiri logo" />
+          <div class="payment-info">
+            <div class="payment-name">Bank Mandiri</div>
+            <div class="payment-detail">No. Rek: 098-765-4321</div>
+          </div>
+        </div>
+
+        <div class="payment-card" title="LinkAja">
+          <img class="payment-icon" src="https://cdn.iconscout.com/icon/free/png-256/linkaja-283323.png" alt="LinkAja logo" />
+          <div class="payment-info">
+            <div class="payment-name">LinkAja</div>
+            <div class="payment-detail">ID: 085678901234</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section id="contact">
+      <h2>Kontak Admin / CS</h2>
+      <ul class="contact-list">
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l3.9-6.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5A8.48 8.48 0 0 1 21 10.5z"></path></svg>
+          <a href="tel:+6289527864537" title="Telepon Admin">+6289527864537</a>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 2v.01L12 13 4 6.01V6h16z"></path></svg>
+          <a href="mailto:" title="Email Admin">cs@yourdomain.com</a>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382a8.453 8.453 0 0 1-4.47 4.471l-.36.156a1.932 1.932 0 0 1-2.104-.515l-2.5-2.5a1.947 1.947 0 0 1-.516-2.103l.156-.361a8.484 8.484 0 0 1 4.473-4.467l.34-.134a1.95 1.95 0 0 1 2.156.545l1.687 2.25a1.948 1.948 0 0 1-.669 2.098z"></path></svg>
+          <a ="https://wa.me/6289527864537" target="_blank" rel="noopener" title="WhatsApp Admin">WhatsApp CS</a>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 Joki Akun Mobile Legends - All Rights Reserved
+  </footer>
+
+  <script>
+    function orderPackage(packageName) {
+      const userConfirmed = confirm('Kamu akan memesan "' + packageName + '". Lanjutkan ke proses pemesanan?');
+      if(userConfirmed) {
+        alert('Terima kasih telah memesan ' + packageName + '! Segera Hubungi Tim kami Agar Segera Di Proses.');
+      }
+    }
+    
+    
+  </script>
+</body>
+</html>
+
